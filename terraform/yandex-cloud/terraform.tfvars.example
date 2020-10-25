@@ -1,0 +1,5 @@
+# Provider
+oauth_token = OAuth_token
+cloud_id = CloudID
+folder_id = some_folder_id
+zone = ru-central1-a

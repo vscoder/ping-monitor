@@ -1,0 +1,2 @@
+- [ ] describe infra https://cloud.yandex.ru/docs/solutions/infrastructure-management/terraform-quickstart#configure-terraform
+- [ ] the docs [Yandex.Cloud Provider](https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs)

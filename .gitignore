@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+###
+# custom
+###
+# terraform
+.terraform
+terraform.tfvars
