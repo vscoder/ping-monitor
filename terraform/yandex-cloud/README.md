@@ -17,3 +17,15 @@ And set variables values in `./terraform.tfvars` like in `./terraform.tfvars.exa
 ```shell
 yc config list
 ```
+
+## Up infrastructure
+
+Just run `terraform apply` and type `yes` to up infrastructure
+
+## Destroy infrastructure
+
+To destroy infrastructure, run
+```shell
+terraform destroy
+```
+and type `yes`

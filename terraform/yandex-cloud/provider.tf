@@ -1,4 +1,3 @@
-
 provider "yandex" {
   token     = var.oauth_token
   cloud_id  = var.cloud_id

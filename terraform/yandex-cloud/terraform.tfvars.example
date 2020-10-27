@@ -1,5 +1,8 @@
-# Provider
+# Provider (yc config show)
 oauth_token = OAuth_token
 cloud_id = CloudID
 folder_id = some_folder_id
 zone = ru-central1-a
+
+# Instance
+public_key_path = ~/.ssh/id_rsa.pub

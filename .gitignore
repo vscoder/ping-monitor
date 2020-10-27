@@ -134,3 +134,6 @@ dmypy.json
 # terraform
 .terraform
 terraform.tfvars
+*.tfstate
+*.tfstate.backup
+*.lock.info
