@@ -41,7 +41,7 @@ fs_setup:
     device: /dev/disk/by-id/virtio-data-disk
     partition: auto
 mounts:
- - [ /dev/disk/by-id/virtio-data-disk-part1, /data, auto, "defaults" ]
+ - [ /dev/disk/by-id/virtio-data-disk-part1, /var/lib/docker, auto, "defaults" ]
 
 #
 # bootcmd:
