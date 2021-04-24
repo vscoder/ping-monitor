@@ -13,6 +13,11 @@ curl https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
 
 Next create profile folllowing the instruction https://cloud.yandex.ru/docs/cli/quickstart#initialize
 
+Oauth token can be generated with command
+```shell
+yc iam create-token
+```
+
 And set variables values in `./terraform.tfvars` like in `./terraform.tfvars.example`. Variables values can be obtained via the foolowing command:
 ```shell
 yc config list

@@ -137,3 +137,4 @@ terraform.tfvars
 *.tfstate
 *.tfstate.backup
 *.lock.info
+.terraform.lock.hcl

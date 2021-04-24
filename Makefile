@@ -27,3 +27,30 @@ install_tflint:
 	mv ${TEMP_DIR}/tflint ${BIN_DIR}/tflint-${TFLINT_VERSION}
 	ln -sf tflint-${TFLINT_VERSION} ${BIN_DIR}/tflint
 	${BIN_DIR}/tflint --version && rm ${TEMP_DIR}/tflint-${TFLINT_VERSION}.zip
+
+
+###
+# Yandex Cloud
+###
+yc_create_token:
+	yc iam create-token
+
+yc_get_profile:
+	yc config profile get ${YC_PROFILE}
+
+yc_list_images:
+	yc compute image list --folder-id standard-images
+
+yc_get_user_account:
+	yc iam user-account get --login ${YC_USER_ACCOUNT_LOGIN}
+
+###
+# Terraform
+###
+terraform_yc_apply:
+	cd ./terraform/yandex-cloud && \
+	terraform apply
+
+terraform_yc_destroy:
+	cd ./terraform/yandex-cloud && \
+	terraform destroy

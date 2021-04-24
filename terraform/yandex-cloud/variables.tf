@@ -12,7 +12,12 @@ variable zone {
   default = "ru-central1-a"
 }
 
-variable public_key_path {
-  description = "SSH public key path"
-  default = "~/.ssh/id_rsa.pub"
+variable data_disk_size {
+  description = "data-disk size, Gb"
+  default = "10"
 }
+
+#variable public_key_path {
+#  description = "SSH public key path"
+#  default = "~/.ssh/id_rsa.pub"
+#}

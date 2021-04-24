@@ -13,8 +13,17 @@ resource "yandex_compute_instance" "pingmon-vm" {
 
   boot_disk {
     initialize_params {
-      image_id = "fd878e3sgmosqaquvef5"
+      # centos-8
+      #image_id = "fd878e3sgmosqaquvef5"
+      # ubuntu-2004-lts
+      image_id = "fd8vmcue7aajpmeo39kk"
     }
+  }
+
+  secondary_disk {
+    disk_id = yandex_compute_disk.pingmon-vm-data-disk.id
+    auto_delete = true
+    device_name = "data-disk"
   }
 
   network_interface {
@@ -23,8 +32,18 @@ resource "yandex_compute_instance" "pingmon-vm" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file(var.public_key_path)}"
+    user-data = file("./cloud-config.yml")
   }
+}
+
+###
+# Data disk
+###
+resource "yandex_compute_disk" "pingmon-vm-data-disk" {
+  name = "pingmon-vm-data-disk"
+  type = "network-hdd"
+  zone = var.zone
+  size = var.data_disk_size
 }
 
 ###
@@ -50,4 +69,8 @@ output "internal_ip_address_pingmon_vm" {
 
 output "external_ip_address_pingmon_vm" {
   value = yandex_compute_instance.pingmon-vm.network_interface.0.nat_ip_address
+}
+
+output "ssh_connection_command" {
+  value = "Wait about one minute and connect:\nssh -o 'UserKnownHostsFile=/dev/null' -o 'StrictHostKeyChecking=no' ansible@${yandex_compute_instance.pingmon-vm.network_interface.0.nat_ip_address}"
 }

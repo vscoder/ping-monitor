@@ -1,0 +1,40 @@
+## template: jinja
+#cloud-config
+hostname: ping-monitor
+users:
+  #- default
+  - name: ansible
+    groups: sudo
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    ssh-authorized-keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGlKIqgyWzF5u6GZOe0FAHoAuHkU/XHPB113r32k629X ping-monotor yandex cloud
+
+packages:
+  - tree
+  - make
+  - jq
+
+# device_aliases:
+#   data0: /dev/disk/by-id/virtio-data-disk
+disk_setup:
+  /dev/disk/by-id/virtio-data-disk:
+    table_type: gpt
+    layout: true
+    overwrite: false
+fs_setup:
+  - label: data0
+    filesystem: ext4
+    device: /dev/disk/by-id/virtio-data-disk
+    partition: auto
+mounts:
+ - [ /dev/disk/by-id/virtio-data-disk-part1, /data, auto, "defaults" ]
+
+#
+# bootcmd:
+#   - echo "I am booted as '$(whoami)'"
+
+# runcmd:
+#   - echo "I am runned as '$(whoami)'"
+#   - echo "Availability zone {{ v1.availability_zone }}" > /az.txt
+#   - "I am a ..."
