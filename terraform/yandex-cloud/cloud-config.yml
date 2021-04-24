@@ -4,7 +4,9 @@ hostname: ping-monitor
 users:
   #- default
   - name: ansible
-    groups: sudo
+    groups:
+      - sudo
+      - docker
     shell: /bin/bash
     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
     ssh-authorized-keys:
@@ -14,6 +16,17 @@ packages:
   - tree
   - make
   - jq
+  # Docker
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+
+apt:
+  sources:
+    docker:
+      source: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $RELEASE stable"
+      # Get keyid: curl -sL https://download.docker.com/linux/ubuntu/gpg | gpg
+      keyid: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
 
 # device_aliases:
 #   data0: /dev/disk/by-id/virtio-data-disk
