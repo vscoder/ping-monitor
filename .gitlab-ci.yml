@@ -1,0 +1,22 @@
+image: docker:stable
+
+.runner_tag:
+  tags:
+    - docker
+
+stages:
+  - check
+  - deploy
+  - destroy
+
+variables:
+  TF_VAR_oauth_token: ${token}
+  TF_VAR_cloud_id: ${cloud_id}
+  TF_VAR_folder_id: ${folder_id}
+  TF_VAR_zone: ${zone}
+  TF_VAR_data_disk_size: ${data_disk_size}
+
+validate:
+  extends: .runner_tag
+  stage: check
+  image: hashicorp/terraform:${TERRAFORM_VERSION}

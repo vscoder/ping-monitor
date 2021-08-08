@@ -17,6 +17,7 @@ resource "yandex_compute_instance" "pingmon-vm" {
       #image_id = "fd878e3sgmosqaquvef5"
       # ubuntu-2004-lts
       image_id = "fd8vmcue7aajpmeo39kk"
+      size = 5
     }
   }
 
